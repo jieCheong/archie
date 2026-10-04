@@ -189,7 +189,12 @@ function ToolboxItem({ icon, name }: ToolboxItemProps) {
   );
 }
 
-export default function SystemCanvas() {
+export default function SystemCanvas({
+  onGetStarted,
+}: {
+  onGetStarted: () => void;
+}) {
+
   return (
     <div className="story-demo">
       {/* =====================================================
@@ -225,7 +230,7 @@ export default function SystemCanvas() {
       </div>
 
       {/* =====================================================
-          ARCHITECT PRODUCT WORKSPACE
+          ARCHITECH PRODUCT WORKSPACE
 
           This shell exists from the very beginning.
       ===================================================== */}
@@ -893,6 +898,7 @@ export default function SystemCanvas() {
               <button
                 className="repo-demo-cta-button"
                 type="button"
+                onClick={onGetStarted}
               >
                 Get started
 
@@ -1024,7 +1030,7 @@ export default function SystemCanvas() {
               </div>
 
               <div>
-                <span>ARCHITECT GUIDE</span>
+                <span>ARCHITECH GUIDE</span>
                 <strong>Build the basics</strong>
               </div>
             </div>
@@ -1059,7 +1065,7 @@ export default function SystemCanvas() {
               </div>
 
               <div>
-                <span>ARCHITECT GUIDE</span>
+                <span>ARCHITECH GUIDE</span>
                 <strong>Handle the request</strong>
               </div>
             </div>
@@ -1093,7 +1099,7 @@ export default function SystemCanvas() {
               </div>
 
               <div>
-                <span>ARCHITECT GUIDE</span>
+                <span>ARCHITECH GUIDE</span>
                 <strong>Remember the data</strong>
               </div>
             </div>
@@ -1108,7 +1114,7 @@ export default function SystemCanvas() {
     </div>
 
     <div>
-      <span>ARCHITECT GUIDE</span>
+      <span>ARCHITECH GUIDE</span>
       <strong>Your first system</strong>
     </div>
   </div>
@@ -1166,7 +1172,7 @@ export default function SystemCanvas() {
               </div>
 
               <div>
-                <span>ARCHITECT GUIDE</span>
+                <span>ARCHITECH GUIDE</span>
                 <strong>Watch the bottleneck</strong>
               </div>
             </div>
@@ -1201,7 +1207,7 @@ export default function SystemCanvas() {
               </div>
 
               <div>
-                <span>ARCHITECT GUIDE</span>
+                <span>ARCHITECH GUIDE</span>
                 <strong>Remove the bottleneck</strong>
               </div>
             </div>
@@ -1236,7 +1242,7 @@ export default function SystemCanvas() {
               </div>
 
               <div>
-                <span>ARCHITECT GUIDE</span>
+                <span>ARCHITECH GUIDE</span>
                 <strong>Why this works</strong>
               </div>
             </div>

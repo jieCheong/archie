@@ -6279,7 +6279,7 @@ body,
   transform: translateY(4px);
 }
 /* =========================================================
-   ARCHITECT — AUTHENTICATION (sign in / sign up)
+   ARCHITECH — AUTHENTICATION (sign in / sign up)
    Single source of auth styling. Everything is scoped under .auth-page
    so shared controls (.btn, .ui-input, .ui-status) stay untouched elsewhere.
    ========================================================= */
@@ -6656,7 +6656,7 @@ body,
 
 
 /* =========================================================
-   ARCHITECT — ONBOARDING (experience level, optional GitHub)
+   ARCHITECH — ONBOARDING (experience level, optional GitHub)
    Single source of onboarding styling, scoped under .onboarding.
    Monochrome: selection is carried by contrast, weight and shape.
    ========================================================= */
@@ -7070,5 +7070,822 @@ body,
 
   .onboarding * {
     transition: none;
+  }
+}
+/* =========================================================
+   ARCHITECH — DASHBOARD SHELL
+   New dashboard layout introduced in Home.tsx.
+
+   FRONTEND / BACKEND NOTE:
+   This section controls presentation only. Repository and
+   project data should continue to come from React/backend
+   logic rather than being encoded into CSS.
+   ========================================================= */
+
+
+/* ---------- Page ---------- */
+
+.home-page {
+  min-height: 100vh;
+  background: #fafaf8;
+  color: #111111;
+}
+
+
+/* ---------- Main dashboard structure ---------- */
+
+.architech-dashboard {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  min-height: calc(100vh - 64px);
+  background: #fafaf8;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.dashboard-sidebar {
+  position: relative;
+  border-right: 1px solid #e7e7e2;
+  background: #f6f6f3;
+}
+
+.dashboard-sidebar-content {
+  position: sticky;
+  top: 64px;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100vh - 64px);
+  padding: 32px 18px 24px;
+}
+
+
+/* Small editorial label */
+
+.sidebar-section-label {
+  margin: 0 8px 22px;
+
+  color: #777771;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+
+/* ---------- User ---------- */
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 0 7px 20px;
+}
+
+.sidebar-user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+
+  border: 1px solid #deded8;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sidebar-user-copy {
+  min-width: 0;
+}
+
+.sidebar-user-copy strong,
+.sidebar-user-copy span {
+  display: block;
+}
+
+.sidebar-user-copy strong {
+  overflow: hidden;
+
+  color: #161616;
+
+  font-size: 11px;
+  font-weight: 650;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-user-copy span {
+  margin-top: 3px;
+
+  color: #8b8b85;
+
+  font-size: 8px;
+  font-weight: 500;
+}
+
+
+/* ---------- Divider ---------- */
+
+.sidebar-divider {
+  height: 1px;
+  margin: 0 7px 20px;
+
+  background: #e3e3de;
+}
+
+
+/* ---------- Repository heading ---------- */
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0 8px 9px;
+
+  color: #7c7c76;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.sidebar-repository-count {
+  color: #aaa9a3;
+
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+
+/* ---------- Repository list ---------- */
+
+.repository-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  margin-bottom: 20px;
+}
+
+.repository-item {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 5px;
+
+  width: 100%;
+  min-height: 34px;
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #454541;
+
+  font: inherit;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+.repository-item:hover {
+  background: #ecece7;
+  color: #111111;
+}
+
+.repository-item:active {
+  transform: scale(0.985);
+}
+
+.repository-chevron {
+  color: #aaa9a3;
+
+  font-size: 14px;
+  line-height: 1;
+
+  transition: transform 140ms ease;
+}
+
+.repository-item:hover .repository-chevron {
+  transform: translateX(2px);
+  color: #444440;
+}
+
+.repository-name {
+  overflow: hidden;
+
+  font-size: 9px;
+  font-weight: 550;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repository-count {
+  color: #a2a29c;
+
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+
+/* ---------- Manage repositories ---------- */
+
+.manage-repositories-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: calc(100% - 14px);
+  min-height: 34px;
+
+  margin: -7px 7px 0;
+  padding: 0 8px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #666660;
+
+  font: inherit;
+  font-size: 9px;
+  font-weight: 550;
+
+  cursor: pointer;
+
+  transition:
+    background 140ms ease,
+    color 140ms ease;
+}
+
+.manage-repositories-button:hover {
+  background: #ecece7;
+  color: #111111;
+}
+
+.manage-repositories-button > span:first-child {
+  color: #888882;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   MAIN STUDIO
+   ========================================================= */
+
+.dashboard-studio {
+  min-width: 0;
+  background: #fafaf8;
+}
+
+.dashboard-studio-inner {
+  width: min(100%, 1180px);
+
+  margin: 0 auto;
+  padding: 64px 52px 96px;
+}
+
+
+/* ---------- Main heading ---------- */
+
+.studio-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+
+  margin-bottom: 34px;
+}
+
+.studio-heading-copy {
+  min-width: 0;
+}
+
+.studio-eyebrow {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: #777771;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.studio-heading h1 {
+  margin: 0;
+
+  color: #111111;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.studio-heading p {
+  max-width: 470px;
+
+  margin: 13px 0 0;
+
+  color: #777771;
+
+  font-size: 11px;
+  font-weight: 450;
+  line-height: 1.6;
+}
+
+
+/* ---------- New project ---------- */
+
+.studio-new-project-button.btn {
+  flex: 0 0 auto;
+
+  min-height: 39px;
+  padding: 0 17px;
+
+  border: 1px solid #111111;
+  border-radius: 8px;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 650;
+
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 5px 14px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.studio-new-project-button.btn:hover {
+  background: #272725;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.06),
+    0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.studio-new-project-button.btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   PROJECT NAVIGATION
+   ========================================================= */
+
+.studio-project-navigation {
+  display: flex;
+  align-items: center;
+
+  min-height: 40px;
+
+  margin-bottom: 17px;
+
+  border-bottom: 1px solid #e4e4df;
+}
+
+.home-view-tabs.dashboard-tabs {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+.home-view-tabs.dashboard-tabs button {
+  position: relative;
+
+  min-height: 40px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  color: #999993;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 140ms ease;
+}
+
+.home-view-tabs.dashboard-tabs button:hover {
+  color: #333330;
+}
+
+.home-view-tabs.dashboard-tabs button.active,
+.home-view-tabs.dashboard-tabs button[aria-selected="true"] {
+  background: transparent;
+  color: #111111;
+}
+
+.home-view-tabs.dashboard-tabs button.active::after,
+.home-view-tabs.dashboard-tabs button[aria-selected="true"]::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background: #111111;
+}
+
+
+/* =========================================================
+   EXISTING DASHBOARD CONTENT
+   We are NOT redesigning the project cards yet.
+   These rules only give the old content enough breathing room
+   while we work on the new shell.
+   ========================================================= */
+
+.studio-primary-content {
+  min-width: 0;
+}
+
+.studio-tutorial-content {
+  margin-top: 54px;
+  padding-top: 34px;
+
+  border-top: 1px solid #e4e4df;
+}
+
+
+/* =========================================================
+   DARK MODE — SHELL ONLY
+   Detailed card dark-mode styling remains owned by the
+   existing dashboard component styles for now.
+   ========================================================= */
+
+.home-page.dark {
+  background: #111110;
+  color: #f4f4ef;
+}
+
+.home-page.dark .architech-dashboard,
+.home-page.dark .dashboard-studio {
+  background: #111110;
+}
+
+.home-page.dark .dashboard-sidebar {
+  border-right-color: #2b2b28;
+  background: #171716;
+}
+
+.home-page.dark .sidebar-section-label,
+.home-page.dark .sidebar-heading,
+.home-page.dark .sidebar-repository-count,
+.home-page.dark .repository-count,
+.home-page.dark .studio-eyebrow,
+.home-page.dark .studio-heading p {
+  color: #82827b;
+}
+
+.home-page.dark .sidebar-user-avatar {
+  border-color: #343431;
+
+  background: #20201e;
+  color: #f4f4ef;
+}
+
+.home-page.dark .sidebar-user-copy strong {
+  color: #eeeeea;
+}
+
+.home-page.dark .sidebar-user-copy span {
+  color: #777771;
+}
+
+.home-page.dark .sidebar-divider,
+.home-page.dark .studio-project-navigation,
+.home-page.dark .studio-tutorial-content {
+  border-color: #2b2b28;
+}
+
+.home-page.dark .sidebar-divider {
+  background: #2b2b28;
+}
+
+.home-page.dark .repository-item,
+.home-page.dark .manage-repositories-button {
+  color: #aaa9a3;
+}
+
+.home-page.dark .repository-item:hover,
+.home-page.dark .manage-repositories-button:hover {
+  background: #222220;
+  color: #f4f4ef;
+}
+
+.home-page.dark .studio-heading h1 {
+  color: #f5f5f0;
+}
+
+.home-page.dark .home-view-tabs.dashboard-tabs button {
+  color: #73736e;
+}
+
+.home-page.dark .home-view-tabs.dashboard-tabs button:hover {
+  color: #d4d4ce;
+}
+
+.home-page.dark .home-view-tabs.dashboard-tabs button.active,
+.home-page.dark
+  .home-view-tabs.dashboard-tabs
+  button[aria-selected="true"] {
+  color: #f5f5f0;
+}
+
+.home-page.dark .home-view-tabs.dashboard-tabs button.active::after,
+.home-page.dark
+  .home-view-tabs.dashboard-tabs
+  button[aria-selected="true"]::after {
+  background: #f5f5f0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 980px) {
+  .architech-dashboard {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .dashboard-studio-inner {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+}
+
+@media (max-width: 760px) {
+  .architech-dashboard {
+    display: block;
+  }
+
+  .dashboard-sidebar {
+    display: none;
+  }
+
+  .dashboard-studio-inner {
+    padding: 42px 22px 72px;
+  }
+
+  .studio-heading {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .studio-heading {
+    flex-direction: column;
+  }
+
+  .studio-new-project-button.btn {
+    width: 100%;
+  }
+}
+/* =========================================================
+   ARCHITECH DASHBOARD
+   Main desktop workspace layout
+   ========================================================= */
+
+.dashboard-page {
+  height: calc(100vh - 46px);
+  overflow: hidden;
+  background: #fafaf8;
+}
+
+.dashboard-content {
+  width: min(1180px, calc(100% - 64px));
+  height: 100%;
+  margin: 0 auto;
+  padding: 18px 0 14px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Small section label above the dashboard content */
+.dashboard-intro {
+  margin-bottom: 8px;
+}
+
+.dashboard-eyebrow {
+  display: block;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #777773;
+}
+
+
+/* =========================================================
+   DAILY CHALLENGE
+   Intentionally very compact — this should feel like a
+   dashboard utility strip rather than a full content card.
+   ========================================================= */
+
+.daily-challenge-section {
+  margin-bottom: 18px;
+}
+
+.daily-challenge-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #8a8a85;
+}
+
+.daily-challenge-strip {
+  width: 100%;
+  height: 42px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 28px;
+
+  padding: 0 16px;
+
+  border: 1px solid #deded9;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #111111;
+
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.daily-challenge-strip:hover {
+  border-color: #aaa9a3;
+  background: #f7f7f4;
+}
+
+.daily-challenge-strip:active {
+  transform: translateY(1px);
+}
+
+.daily-challenge-title {
+  overflow: hidden;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.daily-challenge-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 11px;
+  color: #777773;
+  white-space: nowrap;
+}
+
+.daily-challenge-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PROJECTS HEADER
+   ========================================================= */
+
+.dashboard-projects {
+  min-height: 0;
+}
+
+.projects-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.projects-heading h1 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 2.5vw, 38px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+
+  color: #111111;
+}
+
+.projects-heading p {
+  margin: 6px 0 0;
+
+  font-size: 11px;
+  line-height: 1.4;
+
+  color: #777773;
+}
+
+.dashboard-new-project-button {
+  flex-shrink: 0;
+}
+
+.projects-navigation {
+  margin-top: 11px;
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE FALLBACK
+
+   Normal desktop/laptop = one-screen dashboard.
+   Very short screens = allow scrolling instead of hiding
+   content from the user.
+   ========================================================= */
+
+@media (max-height: 700px), (max-width: 800px) {
+  .dashboard-page {
+    height: auto;
+    min-height: calc(100vh - 46px);
+    overflow: visible;
+  }
+
+  .dashboard-content {
+    width: min(100% - 32px, 1180px);
+    height: auto;
   }
 }

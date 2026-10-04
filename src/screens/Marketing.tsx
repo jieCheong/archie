@@ -287,7 +287,7 @@ export function Landing({
         <a
           href="#system-story"
           className="hero-explore"
-          aria-label="Explore ARCHITECT"
+          aria-label="Explore ARCHITECH"
         >
           <span>EXPLORE</span>
 
@@ -312,7 +312,7 @@ export function Landing({
           05 CHALLENGE
       ====================================== */}
 
-      <SystemStory />
+      <SystemStory onGetStarted={signUp} />
 
     </main>
   );
